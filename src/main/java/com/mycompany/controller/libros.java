@@ -7,13 +7,7 @@ public class libros {
 
     public void agregarlibro() {
 
-        for (int i = 0; i < inventario; i++) {
-
-            if (nombre && isbn) {
-                inventario++;
-            }
-
-        }
+       
 
     }
      public void eliminarlibro(){
