@@ -48,7 +48,7 @@ public class Prestamo implements Serializable {
     }
 
     public void setIdprestamo(String idprestamo) {
-        this.isbn = idprestamo;
+        this.idprestamo = idprestamo;
     }
 
     public String getFechaprestamo() {
