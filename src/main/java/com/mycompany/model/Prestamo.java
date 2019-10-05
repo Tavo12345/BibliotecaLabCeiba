@@ -43,4 +43,52 @@ public class Prestamo implements Serializable {
     @Column(name="cedulausuario")
     private Integer cedulausuario; 
     
+     public String getIdprestamo() {
+        return idprestamo;
+    }
+
+    public void setIdprestamo(String idprestamo) {
+        this.isbn = idprestamo;
+    }
+
+    public String getFechaprestamo() {
+        return fechaprestamo;
+    }
+
+    public void setFechaprestamo(String fechaprestamo) {
+        this.fechaprestamo = fechaprestamo;
+    }
+
+    public String getFechaentrega() {
+        return fechaentrega;
+    }
+
+    public void setFechaentrega(String fechaentrega) {
+        this.fechaentrega = fechaentrega;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getIsbnlibro() {
+        return isbnlibro;
+    }
+
+    public void setIsbnlibro(String isbnlibro) {
+        this.isbnlibro = isbnlibro;
+    }
+    
+    public Integer getCedulausuario() {
+        return cedulausuario;
+    }
+
+    public void setCedulausuario(Integer cedulausuario) {
+        this.cedulausuario = cedulausuario;
+    }
+    
 }
