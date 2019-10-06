@@ -26,7 +26,7 @@ public class Prestamo implements Serializable {
     private Integer isbn;
     
     @Column(name="idprestamo")
-    private String idprestamo;
+    private Integer idprestamo;
     
     @Column(name="fechaprestamo")
     private String fechaprestamo;
@@ -43,11 +43,11 @@ public class Prestamo implements Serializable {
     @Column(name="cedulausuario")
     private Integer cedulausuario; 
     
-     public String getIdprestamo() {
+     public Integer getIdprestamo() {
         return idprestamo;
     }
 
-    public void setIdprestamo(String idprestamo) {
+    public void setIdprestamo(Integer idprestamo) {
         this.idprestamo = idprestamo;
     }
 
