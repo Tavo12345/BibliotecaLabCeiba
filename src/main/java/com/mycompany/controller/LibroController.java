@@ -23,6 +23,7 @@ public class LibroController implements Serializable {
     @EJB
     private LibroFacadeLocal libroEJB;
     private Libro libro;
+    private String mensaje[]; 
     
     @PostConstruct
     public void init(){
@@ -30,9 +31,13 @@ public class LibroController implements Serializable {
     }
     
     public void registrar(){
+        if (esPalindromo(libro.getIsbn()) == true){
+              System.out.println("los libros palíndromos solo se pueden utilizar en la biblioteca” ");  
+            }
         try{
             System.out.println("datos: " + libro.getIsbn());
             libroEJB.create(libro);
+            
         }catch(Exception e){
             //Mensaje pendiente por definir
         }
@@ -44,6 +49,12 @@ public class LibroController implements Serializable {
 
     public void setLibro(Libro libro) {
         this.libro = libro;
+    }
+    
+    public static boolean esPalindromo(String cadena) {
+        // Invertir la cadena, cadena es igual a  la original entonces
+        String invertida = new StringBuilder(cadena).reverse().toString();
+        return invertida.equals(cadena);
     }
     
 }
