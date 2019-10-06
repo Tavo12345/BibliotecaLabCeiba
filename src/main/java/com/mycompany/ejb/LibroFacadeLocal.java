@@ -24,8 +24,5 @@ public interface LibroFacadeLocal {
     Libro find(Object id);
 
     List<Libro> findAll();
-
-    List<Libro> findRange(int[] range);
-
-    int count();
+    
 }

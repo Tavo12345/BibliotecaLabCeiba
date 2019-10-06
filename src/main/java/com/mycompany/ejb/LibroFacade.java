@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class LibroFacade extends AbstractFacade<Libro> implements LibroFacadeLocal {
-    @PersistenceContext(unitName = "libroPU")
+    @PersistenceContext(unitName = "bibliotecaPU")
     private EntityManager em;
 
     @Override
