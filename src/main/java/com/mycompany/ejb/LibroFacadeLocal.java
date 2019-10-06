@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,5 +24,7 @@ public interface LibroFacadeLocal {
     Libro find(Object id);
 
     List<Libro> findAll();
+    
+    public Libro ExisteLibro(String isbn) throws Exception;
     
 }
