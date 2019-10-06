@@ -5,12 +5,50 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Prestamo de libros</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+        <h:outputScript library="js" name="spanishLocale.js"
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:fieldset legend="Prestar Libro">
+                <br />
+                <br />
+                <p:outputLabel value="ID Prestamo " />
+                <p:inputText value="#{libroController.libro.idprestamo}" />
+                <br />
+                <br />
+                <p:outputLabel value="Fecha del prestamo " />
+                <p:calendar locale="es" value="#{libroController.libro.fechaprestamo}" />
+                <br />
+                <br />
+                <p:outputLabel value="Fecha de entrega " />
+                <p:calendar value="#{libroController.libro.fechaentrega}" />
+                <br />
+                <br />
+                <p:outputLabel value="Estado del prestamo " />
+                <h:selectOneRadio value="#{libroController.libro.estado}">
+                    <f:selectItem itemValue="Prestado" itemLabel="PRESTADO" />
+                </h:selectOneRadio>
+                <br />
+                <br />
+                <p:outputLabel value="Código ISBN del libro " />
+                <p:inputText value="#{libroController.libro.isbnlibro}" />
+                <br />
+                <p:outputLabel value="No. Identificación del usuario " />
+                <p:inputText value="#{libroController.libro.cedulausuario}" />
+                <br />
+                <br />
+                <p:commandButton value="Registrar" actionListener="#{libroController.registrar()}" />
+                <p:button value="Continuar" outcome="index" />
+            </p:fieldset>
+        </h:form>
+        
+    </h:body>
 </html>
+
