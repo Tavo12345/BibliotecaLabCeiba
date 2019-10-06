@@ -36,6 +36,22 @@ public class PrestamoController implements Serializable {
             //Mensaje pendiente por definir
         }
     }
+    
+    public void remove(){
+        try{
+            prestamoEJB.remove(prestamo);                        
+        }catch(Exception e){
+            //Mensaje pendiente por definir
+        }
+    }
+    
+    public void edit(){
+        try{
+            prestamoEJB.edit(prestamo);                        
+        }catch(Exception e){
+            //Mensaje pendiente por definir
+        }
+    }
 
     public Prestamo getPrestamo() {
         return prestamo;

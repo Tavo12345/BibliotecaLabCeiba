@@ -38,7 +38,9 @@ and open the template in the editor.
                 <br />
                 <br />
                 <p:commandButton value="Guardar" actionListener="#{libroController.registrar()}" />
-                <p:button value="Continuar" outcome="index" />
+                <p:commandButton value="Editar" actionListener="#{libroController.edit()}" />
+                <p:commandButton value="Eliminar" actionListener="#{libroController.remove()}" />
+                <p:button value="Continuar" outcome="index" />                
             </p:fieldset>
         </h:form>
         
