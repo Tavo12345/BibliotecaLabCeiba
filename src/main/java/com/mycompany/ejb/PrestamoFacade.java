@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class PrestamoFacade extends AbstractFacade<Prestamo> implements PrestamoFacadeLocal{
-    @PersistenceContext(unitName = "biblioteca")
+    @PersistenceContext(unitName = "bibliotecaPU")
     private EntityManager em;
 
     @Override

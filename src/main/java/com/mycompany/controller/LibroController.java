@@ -31,6 +31,7 @@ public class LibroController implements Serializable {
     
     public void registrar(){
         try{
+            System.out.println("datos: " + libro.getIsbn());
             libroEJB.create(libro);
         }catch(Exception e){
             //Mensaje pendiente por definir
