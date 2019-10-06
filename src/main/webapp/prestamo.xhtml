@@ -12,7 +12,7 @@ and open the template in the editor.
     <h:head>
         <title>Prestamo de libros</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <h:outputScript library="js" name="spanishLocale.js"
+        <h:outputScript library="js" name="resources/js/spanishLocale.js"/>
     </h:head>
     <h:body>
         <h:form>
@@ -20,31 +20,31 @@ and open the template in the editor.
                 <br />
                 <br />
                 <p:outputLabel value="ID Prestamo " />
-                <p:inputText value="#{libroController.libro.idprestamo}" />
+                <p:inputText value="#{prestamoController.prestamo.idprestamo}" />
                 <br />
                 <br />
                 <p:outputLabel value="Fecha del prestamo " />
-                <p:calendar locale="es" value="#{libroController.libro.fechaprestamo}" />
+                <p:calendar locale="es" value="#{prestamoController.prestamo.fechaprestamo}" />
                 <br />
                 <br />
                 <p:outputLabel value="Fecha de entrega " />
-                <p:calendar value="#{libroController.libro.fechaentrega}" />
+                <p:calendar value="#{prestamoController.prestamo.fechaentrega}" />
                 <br />
                 <br />
                 <p:outputLabel value="Estado del prestamo " />
-                <h:selectOneRadio value="#{libroController.libro.estado}">
+                <h:selectOneRadio value="#{prestamoController.prestamo.estado}">
                     <f:selectItem itemValue="Prestado" itemLabel="PRESTADO" />
                 </h:selectOneRadio>
                 <br />
                 <br />
                 <p:outputLabel value="Código ISBN del libro " />
-                <p:inputText value="#{libroController.libro.isbnlibro}" />
+                <p:inputText value="#{prestamoController.prestamo.isbnlibro}" />
                 <br />
                 <p:outputLabel value="No. Identificación del usuario " />
-                <p:inputText value="#{libroController.libro.cedulausuario}" />
+                <p:inputText value="#{prestamoController.prestamo.cedulausuario}" />
                 <br />
                 <br />
-                <p:commandButton value="Registrar" actionListener="#{libroController.registrar()}" />
+                <p:commandButton value="Registrar" actionListener="#{prestamoController.registrar()}" />
                 <p:button value="Continuar" outcome="index" />
             </p:fieldset>
         </h:form>

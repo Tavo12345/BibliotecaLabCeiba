@@ -31,8 +31,33 @@ public class LibroController implements Serializable {
     
     public void registrar(){
         try{
-            System.out.println("datos: " + libro.getIsbn());
-            libroEJB.create(libro);
+            Libro libroTmp = libroEJB.ExisteLibro(libro.getIsbn());
+           /*
+            if(libroTmp != null){
+                libro.setCantidad(libroTmp.getCantidad() + 1);
+                libro.setNombre(libroTmp.getNombre());
+                libro.setDescripcion(libroTmp.getDescripcion());
+                libro.setClasificacion(libroTmp.getClasificacion());
+                libroEJB.edit(libro);
+            }else{*/
+              libroEJB.create(libro);  
+            //}            
+        }catch(Exception e){
+            //Mensaje pendiente por definir
+        }
+    }
+    
+    public void remove(){
+        try{
+            libroEJB.remove(libro);                        
+        }catch(Exception e){
+            //Mensaje pendiente por definir
+        }
+    }
+    
+    public void edit(){
+        try{
+            libroEJB.edit(libro);                        
         }catch(Exception e){
             //Mensaje pendiente por definir
         }

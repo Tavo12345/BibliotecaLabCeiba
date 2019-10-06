@@ -6,9 +6,11 @@
 package com.mycompany.ejb;
 
 import com.mycompany.model.Libro;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -26,5 +28,26 @@ public class LibroFacade extends AbstractFacade<Libro> implements LibroFacadeLoc
 
     public LibroFacade() {
         super(Libro.class);
+    }
+    
+    @Override
+    public Libro ExisteLibro(String isbn){
+        Libro respuesta = null;
+        /*
+        try{
+           String consulta = "FROM libro WHERE isbn = ? ";
+           Query query = em.createQuery(consulta);
+           query.setParameter(1, isbn);
+           List<Libro> resultado = query.getResultList();
+           if (!resultado.isEmpty()){
+               respuesta = resultado.get(0);
+           }
+        }catch(Exception e){
+            System.out.println("Error al consultar existencia del libro"); 
+        }
+        */
+        
+        
+        return respuesta;
     }
 }
