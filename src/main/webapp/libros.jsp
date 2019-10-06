@@ -24,11 +24,18 @@
             </div>
              <div>
                   <label for="descripcion">Descripcion:</label>
-		  <input id="isb" name="descripcion" type="descripcion" placeholder="Escriba isb" />
+		  <input id="descripcion" name="descripcion" type="text" placeholder="Escriba descripcion" />
             </div>
             <div>
                   <label for="clasificacion">Clasificacion:</label>
-		  <input id="isb" name="descripcion" type="descripcion" placeholder="Escriba isb" />
+		  <input id="clasificacion" name="clasificacion" type="text" placeholder="Escriba clasificaciòn" />
+            </div>
+            <div>
+                  <label for="cantidad">Clasificacion:</label>
+		  <input id="cantidad" name="cantidad" type="text" placeholder="Escriba cantidad" />
+            </div>
+             <div>
+		  <input type="submit" value="enviar" />
             </div>
     </body>
 </html>
