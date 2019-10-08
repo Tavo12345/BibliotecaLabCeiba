@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -15,7 +17,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="libro")
-
+@NamedQueries({
+    @NamedQuery(query = "SELECT l FROM Libro l WHERE l.isbn = :isbn", name = "buscar libro por isbn"),
+    @NamedQuery(query = "SELECT l FROM Libro l", name = "buscar libros")
+})
 public class Libro implements Serializable {
     
     @Id 
@@ -34,6 +39,10 @@ public class Libro implements Serializable {
     @Column(name="cantidad")
     private Integer cantidad;  
 
+    public Libro() {
+        cantidad = 0;
+    }
+        
     public String getIsbn() {
         return isbn;
     }

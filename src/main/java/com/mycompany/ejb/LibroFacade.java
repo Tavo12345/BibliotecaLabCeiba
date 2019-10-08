@@ -33,20 +33,41 @@ public class LibroFacade extends AbstractFacade<Libro> implements LibroFacadeLoc
     @Override
     public Libro ExisteLibro(String isbn){
         Libro respuesta = null;
-        /*
+        
         try{
-           String consulta = "FROM libro WHERE isbn = ? ";
-           Query query = em.createQuery(consulta);
-           query.setParameter(1, isbn);
+           Query query = em.createNamedQuery("buscar libro por isbn");
+           query.setParameter("isbn", isbn);
            List<Libro> resultado = query.getResultList();
-           if (!resultado.isEmpty()){
+           
+           if(!resultado.isEmpty()){
                respuesta = resultado.get(0);
            }
         }catch(Exception e){
             System.out.println("Error al consultar existencia del libro"); 
         }
-        */
         
+        return respuesta;
+    }
+    
+    @Override
+    public List<Libro> findAll(){
+        List<Libro> respuesta = null;
+        
+        try{
+           Query query = em.createNamedQuery("buscar libros");
+           List<Libro> resultado = query.getResultList();
+           if(!resultado.isEmpty()){
+               respuesta = resultado;
+           }
+           /*
+           for (Libro lib: resultado){
+               
+           }
+           */
+           
+        }catch(Exception e){
+            System.out.println("Error al consultar existencia del libro"); 
+        }
         
         return respuesta;
     }

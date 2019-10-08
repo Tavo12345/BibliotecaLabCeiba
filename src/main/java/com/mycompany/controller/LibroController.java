@@ -8,8 +8,10 @@ package com.mycompany.controller;
 import com.mycompany.ejb.LibroFacadeLocal;
 import com.mycompany.model.Libro;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
@@ -23,34 +25,32 @@ public class LibroController implements Serializable {
     @EJB
     private LibroFacadeLocal libroEJB;
     private Libro libro;
-    private String mensaje[]; 
-    
+    private List<Libro> gridLibros;
+        
     @PostConstruct
     public void init(){
         libro = new Libro();
+        findAll();
     }
     
     public void registrar(){
-        if (esPalindromo(libro.getIsbn()) == true){
-              System.out.println("los libros palíndromos solo se pueden utilizar en la biblioteca” ");  
-            }
         try{
-<<<<<<< HEAD
-            System.out.println("datos: " + libro.getIsbn());
-            libroEJB.create(libro);
-            
-=======
             Libro libroTmp = libroEJB.ExisteLibro(libro.getIsbn());
-           /*
+           
             if(libroTmp != null){
-                libro.setCantidad(libroTmp.getCantidad() + 1);
+                if(libro.getCantidad() == 0){
+                    libro.setCantidad(libroTmp.getCantidad() + 1);
+                }else{
+                    libro.setCantidad(libroTmp.getCantidad() + libro.getCantidad());
+                }                
                 libro.setNombre(libroTmp.getNombre());
                 libro.setDescripcion(libroTmp.getDescripcion());
                 libro.setClasificacion(libroTmp.getClasificacion());
                 libroEJB.edit(libro);
-            }else{*/
+            }else{
               libroEJB.create(libro);  
-            //}            
+            } 
+            FacesContext.getCurrentInstance().getExternalContext().redirect("libro.xhtml");
         }catch(Exception e){
             //Mensaje pendiente por definir
         }
@@ -58,7 +58,20 @@ public class LibroController implements Serializable {
     
     public void remove(){
         try{
-            libroEJB.remove(libro);                        
+            Libro libroTmp = libroEJB.ExisteLibro(libro.getIsbn());
+           
+            if(libroTmp != null){
+                if(libroTmp.getCantidad() > 0){
+                    libro.setCantidad(libroTmp.getCantidad() - 1);
+                    libro.setNombre(libroTmp.getNombre());
+                    libro.setDescripcion(libroTmp.getDescripcion());
+                    libro.setClasificacion(libroTmp.getClasificacion());
+                    libroEJB.edit(libro);
+                }else{
+                    libroEJB.remove(libro);  
+                }
+            } 
+            FacesContext.getCurrentInstance().getExternalContext().redirect("libro.xhtml");
         }catch(Exception e){
             //Mensaje pendiente por definir
         }
@@ -66,11 +79,25 @@ public class LibroController implements Serializable {
     
     public void edit(){
         try{
-            libroEJB.edit(libro);                        
->>>>>>> c94d399a38c79d3f3fbc196e0bb49f11e6a0d4ec
+            libroEJB.edit(libro);     
+            FacesContext.getCurrentInstance().getExternalContext().redirect("libro.xhtml");
         }catch(Exception e){
             //Mensaje pendiente por definir
         }
+    }
+    
+    public void findAll(){
+       try{
+            gridLibros = libroEJB.findAll();                        
+        }catch(Exception e){
+            //Mensaje pendiente por definir
+        }       
+    }
+
+    public static boolean esPalindromo(String cadena) {
+        // Invertir la cadena, cadena es igual a  la original entonces
+        String invertida = new StringBuilder(cadena).reverse().toString();
+        return invertida.equals(cadena);
     }
 
     public Libro getLibro() {
@@ -80,11 +107,13 @@ public class LibroController implements Serializable {
     public void setLibro(Libro libro) {
         this.libro = libro;
     }
-    
-    public static boolean esPalindromo(String cadena) {
-        // Invertir la cadena, cadena es igual a  la original entonces
-        String invertida = new StringBuilder(cadena).reverse().toString();
-        return invertida.equals(cadena);
+
+    public List<Libro> getGridLibros() {
+        return gridLibros;
+    }
+
+    public void setGridLibros(List<Libro> gridLibros) {
+        this.gridLibros = gridLibros;
     }
     
 }

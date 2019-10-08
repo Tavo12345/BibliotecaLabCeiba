@@ -9,7 +9,7 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Crear Proyecto</title>
+        <title>Libro</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -39,8 +39,30 @@ and open the template in the editor.
                 <br />
                 <p:commandButton value="Guardar" actionListener="#{libroController.registrar()}" />
                 <p:commandButton value="Editar" actionListener="#{libroController.edit()}" />
-                <p:commandButton value="Eliminar" actionListener="#{libroController.remove()}" />
-                <p:button value="Continuar" outcome="index" />                
+                <p:commandButton value="Eliminar" actionListener="#{libroController.remove()}" />                
+                <p:button value="Continuar" outcome="index" /> 
+                <br />
+                <br />
+                <p:dataTable var="lib" value="#{libroController.gridLibros}">
+                    <p:column headerText="ISBN">
+                        <h:outputText value="#{lib.isbn}" />
+                    </p:column>
+
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{lib.nombre}" />
+                    </p:column>
+
+                    <p:column headerText="Descripción">
+                        <h:outputText value="#{lib.descripcion}" />
+                    </p:column>
+
+                    <p:column headerText="Clasificación">
+                        <h:outputText value="#{lib.clasificacion}" />
+                    </p:column>
+                    <p:column headerText="Cantidad">
+                        <h:outputText value="#{lib.cantidad}" />
+                    </p:column>
+                </p:dataTable>
             </p:fieldset>
         </h:form>
         
